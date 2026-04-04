@@ -1,0 +1,189 @@
+{
+  "patients": [
+    {
+      "patient_id": "P001",
+      "name": "Rajesh Kumar",
+      "age": 38,
+      "gender": "male",
+      "blood_group": "B+",
+      "city": "Patna",
+      "conditions": [
+        "Diabetes",
+        "Hypertension"
+      ],
+      "allergies": [
+        "Penicillin"
+      ],
+      "temperature_celsius": 36.8,
+      "blood_pressure": "138/88",
+      "doctor": "Dr. Priya Mehta",
+      "status": "active"
+    },
+    {
+      "patient_id": "P002",
+      "name": "Sunita Devi",
+      "age": 53,
+      "gender": "female",
+      "blood_group": "O+",
+      "city": "Delhi",
+      "conditions": [
+        "Hypothyroidism"
+      ],
+      "allergies": [],
+      "temperature_celsius": 36.6,
+      "blood_pressure": "124/80",
+      "doctor": "Dr. Amit Joshi",
+      "status": "active"
+    },
+    {
+      "patient_id": "P003",
+      "name": "Mohammed Irfan",
+      "age": 25,
+      "gender": "male",
+      "blood_group": "A-",
+      "city": "Hyderabad",
+      "conditions": [
+        "Asthma"
+      ],
+      "allergies": [
+        "Dust",
+        "Pollen"
+      ],
+      "temperature_celsius": 36.5,
+      "blood_pressure": "118/76",
+      "doctor": "Dr. Kavita Rao",
+      "status": "active"
+    },
+    {
+      "patient_id": "P004",
+      "name": "Priya Sharma",
+      "age": 31,
+      "gender": "female",
+      "blood_group": "AB+",
+      "city": "Mumbai",
+      "conditions": [],
+      "allergies": [
+        "Sulfa drugs"
+      ],
+      "temperature_celsius": 37.1,
+      "blood_pressure": "110/70",
+      "doctor": "Dr. Rakesh Gupta",
+      "status": "active"
+    },
+    {
+      "patient_id": "P005",
+      "name": "Arjun Singh",
+      "age": 67,
+      "gender": "male",
+      "blood_group": "O-",
+      "city": "Jaipur",
+      "conditions": [
+        "Heart Disease",
+        "Diabetes"
+      ],
+      "allergies": [],
+      "temperature_celsius": 36.9,
+      "blood_pressure": "150/95",
+      "doctor": "Dr. Neha Patel",
+      "status": "critical"
+    },
+    {
+      "patient_id": "P006",
+      "name": "Meena Iyer",
+      "age": 44,
+      "gender": "female",
+      "blood_group": "A+",
+      "city": "Chennai",
+      "conditions": [
+        "Migraine"
+      ],
+      "allergies": [
+        "Ibuprofen"
+      ],
+      "temperature_celsius": 36.7,
+      "blood_pressure": "122/78",
+      "doctor": "Dr. Suresh Babu",
+      "status": "active"
+    },
+    {
+      "patient_id": "P007",
+      "name": "Vikram Yadav",
+      "age": 19,
+      "gender": "male",
+      "blood_group": "B-",
+      "city": "Lucknow",
+      "conditions": [],
+      "allergies": [],
+      "temperature_celsius": 38.2,
+      "blood_pressure": "116/74",
+      "doctor": "Dr. Priya Mehta",
+      "status": "active"
+    },
+    {
+      "patient_id": "P008",
+      "name": "Fatima Khan",
+      "age": 58,
+      "gender": "female",
+      "blood_group": "AB-",
+      "city": "Kolkata",
+      "conditions": [
+        "Osteoporosis",
+        "Hypertension"
+      ],
+      "allergies": [
+        "Aspirin"
+      ],
+      "temperature_celsius": 36.4,
+      "blood_pressure": "142/90",
+      "doctor": "Dr. Amit Joshi",
+      "status": "active"
+    },
+    {
+      "patient_id": "P009",
+      "name": "Rohit Verma",
+      "age": 35,
+      "gender": "male",
+      "blood_group": "O+",
+      "city": "Pune",
+      "conditions": [
+        "Anxiety"
+      ],
+      "allergies": [],
+      "temperature_celsius": 36.6,
+      "blood_pressure": "120/80",
+      "doctor": "Dr. Kavita Rao",
+      "status": "active"
+    },
+    {
+      "patient_id": "P010",
+      "name": "Anjali Nair",
+      "age": 72,
+      "gender": "female",
+      "blood_group": "A+",
+      "city": "Kochi",
+      "conditions": [
+        "Diabetes",
+        "Arthritis",
+        "Hypertension"
+      ],
+      "allergies": [
+        "Penicillin",
+        "Latex"
+      ],
+      "temperature_celsius": 37.3,
+      "blood_pressure": "158/98",
+      "doctor": "Dr. Rakesh Gupta",
+      "status": "critical"
+    },
+    {
+      "patient_id": "P011",
+      "name": "Rohit",
+      "age": 23,
+      "gender": "male",
+      "city": "Patna",
+      "status": "active"
+    }
+  ],
+  "total_patients": 11,
+  "hospital": "City Care Hospital"
+}
