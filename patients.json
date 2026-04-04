@@ -17,7 +17,7 @@
       "temperature_celsius": 36.8,
       "blood_pressure": "138/88",
       "doctor": "Dr. Priya Mehta",
-      "status": "active"
+      "status": "critical"
     },
     {
       "patient_id": "P002",
@@ -160,7 +160,7 @@
       "age": 72,
       "gender": "female",
       "blood_group": "A+",
-      "city": "Kochi",
+      "city": "Jaipur",
       "conditions": [
         "Diabetes",
         "Arthritis",
@@ -174,16 +174,8 @@
       "blood_pressure": "158/98",
       "doctor": "Dr. Rakesh Gupta",
       "status": "critical"
-    },
-    {
-      "patient_id": "P011",
-      "name": "Rohit",
-      "age": 23,
-      "gender": "male",
-      "city": "Patna",
-      "status": "active"
     }
   ],
-  "total_patients": 11,
+  "total_patients": 10,
   "hospital": "City Care Hospital"
 }

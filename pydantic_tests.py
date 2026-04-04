@@ -5,7 +5,7 @@ class Patient(BaseModel):
     age:int
     weight:int
 
-patient1={"name":'Rohit',"age":"30","weight":76}
+patient1={"name":'Rohit',"age":30,"weight":76}
 
 def getinfo(patient:Patient):
     print(patient.name)

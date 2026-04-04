@@ -11,6 +11,13 @@ class Patient(BaseModel):
     city: str
     status: str = "active"
 
+class PatientUpdate(BaseModel):
+    name: str=None
+    age: int=None
+    gender: str=None
+    city: str=None
+    status: str = None
+
 
 @app.get('/about')
 def about():
@@ -56,4 +63,42 @@ def add_patient(patient:Patient):
     
     return{"message":"Patient Created","patient":patient}
     
-        
+@app.put('/patients/{patient_id}')
+def update(patient_id:str,patient:PatientUpdate):
+    with open("patients.json") as file:
+        data=json.load(file) 
+    for p in data["patients"]:
+        if patient_id==p["patient_id"]:
+           if patient.name is not None:p["name"]=patient.name                           
+           if patient.age is not None:p["age"]=patient.age                          
+           if patient.gender is not None:p["gender"]=patient.gender         
+           if patient.city is not None:p["city"]=patient.city
+           if patient.status is not None:p["status"]=patient.status
+           break
+    else : raise HTTPException (status_code=404,detail="Patient does not exist") 
+    
+    temp_path = "patients.json.tmp"
+    with open(temp_path, "w") as file:
+        json.dump(data, file, indent=2)
+    os.replace(temp_path, "patients.json")  
+    return{"message":"Patient Details updated"}
+
+    
+@app.delete('/patients/{patient_id}')
+def delete(patient_id:str):
+    with open("patients.json") as file:
+        data=json.load(file) 
+    for index,p in enumerate(data["patients"]):
+        if patient_id==p["patient_id"]:
+           data["patients"].pop(index)
+           data["total_patients"] = len(data["patients"])
+           break
+    else : raise HTTPException (status_code=404,detail="Patient does not exist") 
+    
+    temp_path = "patients.json.tmp"
+    with open(temp_path, "w") as file:
+        json.dump(data, file, indent=2)
+    os.replace(temp_path, "patients.json")  
+    return{"message":f"Patient {patient_id} Details updated"}
+    
+               
