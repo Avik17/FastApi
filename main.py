@@ -1,6 +1,8 @@
 from fastapi import FastAPI,HTTPException
 from pydantic import BaseModel
 import json,os
+from typing import List,Optional
+
 app=FastAPI()
 
 class Patient(BaseModel):
@@ -12,18 +14,29 @@ class Patient(BaseModel):
     status: str = "active"
 
 class PatientUpdate(BaseModel):
-    name: str=None
-    age: int=None
-    gender: str=None
-    city: str=None
-    status: str = None
+    name: Optional[str] = None
+    age: Optional[int] = None
+    gender: Optional[str] = None
+    city: Optional[str] = None
+    status: Optional[str] = None
 
+class PatientResponse(BaseModel):
+    patient_id: str
+    name: str
+    age: int
+    city: Optional[str] = None
+    status: Optional[str] = None
+    doctor: Optional[str] = None
 
+class PatientsListResponse(BaseModel):
+    total: int
+    patients: List[PatientResponse]    
+   
 @app.get('/about')
 def about():
     return {"message":"hello baby"}
 
-@app.get('/info/{patient_id}')
+@app.get('/info/{patient_id}',response_model=PatientResponse)
 def info(patient_id:str):
     with open('patients.json') as file:
          data= json.load(file)
@@ -32,7 +45,7 @@ def info(patient_id:str):
                 return patient
          raise HTTPException(status_code=404, detail="Patient not found")
 
-@app.get("/patients")
+@app.get("/patients",response_model=PatientsListResponse)
 def get_patients(city: str = None, status: str = "active"):
     with open("patients.json") as file:
          data=json.load(file)
