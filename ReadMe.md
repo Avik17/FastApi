@@ -3,7 +3,7 @@
 A REST API for managing patient records built with FastAPI.
 
 ## Live URL
-https://your-railway-url.up.railway.app/docs
+https://fastapi-production-1509.up.railway.app/docs
 
 ## Endpoints
 - GET /patients — filter by city and status
