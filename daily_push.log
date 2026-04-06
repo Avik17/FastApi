@@ -2,3 +2,11 @@
  1 file changed, 3 insertions(+)
  create mode 100644 learning-log/2026-04-04.md
 fatal: could not read Username for 'https://github.com': Device not configured
+[main 99747e4] chore: daily progress 2026-04-05
+ 3 files changed, 50 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 llm_tests.py
+[main c40aad0] chore: daily learning log 2026-04-05
+ 1 file changed, 3 insertions(+)
+ create mode 100644 learning-log/2026-04-05.md
+fatal: could not read Username for 'https://github.com': Device not configured
