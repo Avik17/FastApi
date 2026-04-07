@@ -1,50 +1,49 @@
-# AI Chat API
+# AI Engineering Projects
 
-A production-ready AI chat API built with FastAPI and Claude (Anthropic).
+Two live production projects built during AI Engineering learning journey.
 
-## Live URLs
-- Patient API: https://fastapi-production-1509.up.railway.app/docs
-- Chat API: Run locally on port 8001
+## Project 1 — AI Engineering Assistant Chatbot
+**Live:** https://huggingface.co/spaces/avik1706/ai-engineering-assistant
 
-## Endpoints
+An AI chatbot that answers questions about AI Engineering — LLMs, RAG, FastAPI, agents, deployment.
 
-### Patient API
-- `GET /patients` — filter patients by city and status
-- `GET /info/{patient_id}` — get patient by ID
-- `POST /patients` — create new patient
-- `PUT /patients/{patient_id}` — update patient fields
-- `DELETE /patients/{patient_id}` — delete patient
+**Features:**
+- Multi-turn conversation with sliding window memory
+- Claude Haiku integration via Anthropic API
+- Gradio UI deployed on HuggingFace Spaces
 
-### Chat API
-- `POST /chat` — multi-turn conversation with memory
-- `POST /chat/stream` — streaming responses word by word
+**Stack:** Python · Anthropic Claude · Gradio · HuggingFace Spaces
 
-## Features
-- Multi-turn memory with sliding window (last 10 messages)
-- Streaming responses via StreamingResponse
-- Token usage and cost tracking
+---
+
+## Project 0 — Patient CRUD API
+**Live:** https://fastapi-production-1509.up.railway.app/docs
+
+A production REST API for managing patient records.
+
+**Features:**
+- Full CRUD: GET, POST, PUT, DELETE
 - Pydantic validation on all inputs and outputs
-- Anthropic Claude Haiku integration
+- HTTPException error handling
+- Dockerized and deployed on Railway
 
-## Tech Stack
-FastAPI · Pydantic · Anthropic Claude · Docker · Railway
+**Stack:** FastAPI · Pydantic · Docker · Railway
+
+---
 
 ## Setup
 ```bash
-# Install dependencies
 pip install -r requirements.txt
 
-# Add your API key to .env
+# Add to .env
 ANTHROPIC_API_KEY=your-key-here
 
-# Run Patient API
-uvicorn main:app --reload
+# Run chatbot
+python app.py
 
-# Run Chat API
-uvicorn chat:app --reload --port 8001
+# Run patient API
+uvicorn main:app --reload
 ```
 
-## Models Used
-- `claude-haiku-4-5-20251001` — fast and cheap for learning
-- `claude-sonnet-4-6` — balanced for production
-- `claude-opus-4-6` — most capable for complex tasks
+## Tech Stack
+FastAPI · Pydantic · Anthropic Claude · Gradio · Docker · Railway · HuggingFace Spaces
