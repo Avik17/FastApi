@@ -11,8 +11,21 @@ An AI chatbot that answers questions about AI Engineering — LLMs, RAG, FastAPI
 - Multi-turn conversation with sliding window memory
 - Claude Haiku integration via Anthropic API
 - Gradio UI deployed on HuggingFace Spaces
+- FastAPI streaming chat API (`chat.py`)
 
-**Stack:** Python · Anthropic Claude · Gradio · HuggingFace Spaces
+**Stack:** Python · Anthropic Claude · Gradio · FastAPI · HuggingFace Spaces
+
+**Setup:**
+```bash
+cd project1-ai-chatbot
+pip install -r requirements.txt
+
+# Run Gradio UI
+python app.py
+
+# Run FastAPI chat API
+uvicorn chat:app --reload
+```
 
 ---
 
@@ -29,21 +42,33 @@ A production REST API for managing patient records.
 
 **Stack:** FastAPI · Pydantic · Docker · Railway
 
----
-
-## Setup
+**Setup:**
 ```bash
+cd project0-patient-api
 pip install -r requirements.txt
-
-# Add to .env
-ANTHROPIC_API_KEY=your-key-here
-
-# Run chatbot
-python app.py
-
-# Run patient API
 uvicorn main:app --reload
+
+# Docker
+docker build -t patient-api .
+docker run -p 8000:8000 patient-api
 ```
 
-## Tech Stack
-FastAPI · Pydantic · Anthropic Claude · Gradio · Docker · Railway · HuggingFace Spaces
+---
+
+## practice/
+Learning scripts for Pydantic models, nested models, and LLM API basics.
+
+---
+
+## Repository Structure
+```
+project0-patient-api/   # Patient CRUD API (FastAPI + Docker + Railway)
+project1-ai-chatbot/    # AI chatbot (Gradio + FastAPI + HuggingFace Spaces)
+practice/               # Learning scripts (Pydantic, LLM basics)
+learning-log/           # Daily learning notes
+```
+
+## Add to .env
+```
+ANTHROPIC_API_KEY=your-key-here
+```
