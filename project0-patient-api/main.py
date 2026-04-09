@@ -2,7 +2,13 @@ from fastapi import FastAPI,HTTPException
 from pydantic import BaseModel
 import json,os
 from typing import List,Optional
+import logging
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='{"time": "%(asctime)s", "level": "%(levelname)s", "message": "%(message)s"}'
+)
+logger = logging.getLogger(__name__)
 app=FastAPI()
 
 class Patient(BaseModel):
@@ -35,6 +41,12 @@ class PatientsListResponse(BaseModel):
 @app.get('/about')
 def about():
     return {"message":"hello baby"}
+@app.get("/health")
+async def health():
+    return {
+        "status": "healthy",
+        "version": "1.0.0"
+    }
 
 @app.get('/info/{patient_id}',response_model=PatientResponse)
 def info(patient_id:str):
@@ -47,6 +59,7 @@ def info(patient_id:str):
 
 @app.get("/patients",response_model=PatientsListResponse)
 def get_patients(city: str = None, status: str = "active"):
+    logger.info(f"GET /patients called with city={city} status={status}")
     with open("patients.json") as file:
          data=json.load(file)
          patients=data["patients"]
@@ -61,6 +74,7 @@ def get_patients(city: str = None, status: str = "active"):
     
 @app.post('/patients')    
 def add_patient(patient:Patient):
+    logger.info(f"POST /patients called for patient_id={patient.patient_id}")
     with open("patients.json") as file:
          data=json.load(file)
 
@@ -99,6 +113,8 @@ def update(patient_id:str,patient:PatientUpdate):
     
 @app.delete('/patients/{patient_id}')
 def delete(patient_id:str):
+    logger.info(f"DELETE /patients called for patient_id={patient_id}")
+
     with open("patients.json") as file:
         data=json.load(file) 
     for index,p in enumerate(data["patients"]):
