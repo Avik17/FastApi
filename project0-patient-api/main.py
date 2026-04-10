@@ -3,6 +3,8 @@ from pydantic import BaseModel
 import json,os
 from typing import List,Optional
 import logging
+import instructor,anthropic
+from dotenv import load_dotenv
 
 logging.basicConfig(
     level=logging.INFO,
@@ -10,7 +12,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 app=FastAPI()
-
+load_dotenv()
 class Patient(BaseModel):
     patient_id: str
     name: str
@@ -37,7 +39,40 @@ class PatientResponse(BaseModel):
 class PatientsListResponse(BaseModel):
     total: int
     patients: List[PatientResponse]    
-   
+  
+
+# At the top — wrap a second Anthropic client with Instructor
+instructor_client = instructor.from_anthropic(
+    anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+)
+
+class MedicalNote(BaseModel):
+    patient_name: str
+    age: int
+    diagnosis: str
+    is_critical: bool
+
+class NoteInput(BaseModel):
+    note: str
+
+@app.post("/extract")
+async def extract_from_note(input: NoteInput):
+    logger.info(f"POST /extract called")
+    
+    record = instructor_client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=1024,
+        response_model=MedicalNote,
+        messages=[{
+            "role": "user",
+            "content": f"Extract structured patient data from this note: {input.note}"
+        }]
+    )
+    
+    return {
+        "extracted": record.model_dump(),
+        "message": "Extraction successful"
+    }
 @app.get('/about')
 def about():
     return {"message":"hello baby"}
