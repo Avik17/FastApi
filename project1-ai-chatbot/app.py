@@ -110,10 +110,7 @@ def chat(message, history):
     response = client.messages.create(
         model="claude-haiku-4-5-20251001",
         max_tokens=1024,
-        system="""You have tools to get the time, calculate math, and check weather.
-IMPORTANT: When you answer using a tool result, remember that you DID use that tool. 
-If asked follow-up questions about a previous calculation or result, acknowledge that 
-you calculated or retrieved it using your tools.""",
+        system="You have tools to get the time, calculate math, and check weather.",
         tools=tools,
         messages=working_messages
     )
